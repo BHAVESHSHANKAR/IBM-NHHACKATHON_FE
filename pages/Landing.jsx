@@ -102,6 +102,12 @@ function Landing() {
                                     Sign In
                                 </Link>
                                 <Link
+                                    to="/admin-login"
+                                    className="text-purple-600 hover:text-purple-700 px-3 py-2 text-sm font-medium transition-colors"
+                                >
+                                    Admin
+                                </Link>
+                                <Link
                                     to="/register"
                                     className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:shadow-lg"
                                 >
@@ -127,6 +133,7 @@ function Landing() {
                     <div className="md:hidden bg-white border-t">
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             <Link to="/login" className="block px-3 py-2 text-blue-600">Sign In</Link>
+                            <Link to="/admin-login" className="block px-3 py-2 text-purple-600">Admin</Link>
                             <Link to="/register" className="block px-3 py-2 bg-blue-600 text-white rounded-lg mx-3">Get Started</Link>
                         </div>
                     </div>
