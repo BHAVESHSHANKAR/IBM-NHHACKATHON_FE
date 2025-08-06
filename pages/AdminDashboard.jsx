@@ -110,7 +110,7 @@ function AdminDashboard() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('http://localhost:6969/api/complaints/stats', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/stats`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
         }
@@ -127,7 +127,7 @@ function AdminDashboard() {
   const fetchComplaints = async (status = null) => {
     setLoadingData(true);
     try {
-      let url = 'http://localhost:6969/api/complaints/all';
+      let url = `${import.meta.env.VITE_API_URL}/api/complaints/all`;
       if (status) {
         url += `?status=${status}`;
       }
@@ -231,7 +231,7 @@ function AdminDashboard() {
 
   const updateComplaintStatus = async (complaintId, newStatus, adminResponse = '') => {
     try {
-      const response = await fetch(`http://localhost:6969/api/complaints/${complaintId}/update-status`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/${complaintId}/update-status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -744,7 +744,7 @@ function AdminDashboard() {
                         className="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-lg"
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = 'https://via.placeholder.com/400x300?text=Image+Not+Available';
+                          e.target.src = `${import.meta.env.VITE_API_URL}/api/complaints/${complaintId}/attachment/${attachment.id}`;
                           console.log('Image failed to load:', previewImage);
                         }}
                         onLoad={() => console.log('Image loaded successfully:', previewImage)}

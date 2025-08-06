@@ -63,7 +63,7 @@ function NewComplaintForm({ user }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:6969/api/ml/classify', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ml/classify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ function NewComplaintForm({ user }) {
         formDataToSend.append('attachments', file);
       });
 
-      const response = await fetch('http://localhost:6969/api/complaints/submit', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/submit`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -425,7 +425,7 @@ function AutoRaisePopup({ isOpen, onClose, user }) {
     setClassification(null);
     
     try {
-      const response = await fetch('http://localhost:6969/api/chatbot/chat', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chatbot/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -512,7 +512,7 @@ function AutoRaisePopup({ isOpen, onClose, user }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:6969/api/ml/classify', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ml/classify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -556,7 +556,7 @@ function AutoRaisePopup({ isOpen, onClose, user }) {
       formData.append('title', complaintDetails.title.trim());
       formData.append('description', complaintDetails.description.trim());
 
-      const response = await fetch('http://localhost:6969/api/complaints/submit', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/submit`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -861,7 +861,7 @@ function AIAssistantPopup({ isOpen, onClose, user }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:6969/api/chatbot/chat', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chatbot/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1087,7 +1087,7 @@ function TrackProgressSection({ user }) {
     setSearched(true);
 
     try {
-      const response = await fetch(`http://localhost:6969/api/chatbot/check-status?ticket_id=${ticketId.trim()}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chatbot/check-status?ticket_id=${ticketId.trim()}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -1160,7 +1160,7 @@ function TrackProgressSection({ user }) {
 
     setSubmittingFeedback(complaintId);
     try {
-      const response = await fetch(`http://localhost:6969/api/complaints/${complaintId}/feedback`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/${complaintId}/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1506,8 +1506,8 @@ function ReportsSection({ user }) {
       });
 
       const endpoint = user?.role === 'admin' 
-        ? 'http://localhost:6969/api/complaints/all'
-        : 'http://localhost:6969/api/complaints/my-complaints';
+        ? `${import.meta.env.VITE_API_URL}/api/complaints/all`
+        : `${import.meta.env.VITE_API_URL}/api/complaints/my-complaints`;
 
       const response = await fetch(`${endpoint}?${params}`, {
         headers: {
@@ -1539,7 +1539,7 @@ function ReportsSection({ user }) {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('http://localhost:6969/api/complaints/stats', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -1882,7 +1882,7 @@ function FeedbackSection({ user }) {
 
   const fetchResolvedComplaints = async () => {
     try {
-      const response = await fetch('http://localhost:6969/api/complaints/my-complaints', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/my-complaints`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -1918,7 +1918,7 @@ function FeedbackSection({ user }) {
 
     setSubmittingFeedback(complaintId);
     try {
-      const response = await fetch(`http://localhost:6969/api/complaints/${complaintId}/feedback`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/${complaintId}/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -2085,7 +2085,7 @@ function CommunitySection({ user }) {
 
   const fetchCommunityComplaints = async () => {
     try {
-      const response = await fetch(`http://localhost:6969/api/complaints/community?page=${currentPage}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/community?page=${currentPage}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
