@@ -11,8 +11,11 @@ import {
     XMarkIcon
 } from '@heroicons/react/24/outline';
 import { WavyBackground } from '../components/ui/wavy-background';
+
+
 import Lottie from 'lottie-react';
-import animationData from '../src/assets/animations/Man and robot with computers sitting together in workplace.json';
+import animationData from '../assets/animations/Man and robot with computers sitting together in workplace.json';
+
 
 function Landing() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
